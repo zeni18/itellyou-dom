@@ -1,0 +1,61 @@
+header {
+    box-shadow:0 2px 8px #f0f1f2;
+    position: relative;
+    z-index: 10;
+    max-width: 100%;
+    background: #fff;
+    
+    :global {
+        .ant-menu-horizontal {
+            border-bottom:0 none;
+            line-height: 60px;
+    
+            .ant-menu-item , .ant-menu-submenu {
+                border-bottom:2px solid transparent;
+            }
+
+            :local {
+                .logo {
+                    padding: 0;
+                    margin-right: 20px;
+                    border: 0 none;
+                    top:-4px;
+            
+                    img{
+                        height: 28px;
+                    }
+                }
+            
+                .logo:hover,.logo:focus,.logo:active{
+                    border: 0 none;
+                }
+
+                .github {
+                    top: -2px;
+                    font-size: 12px;
+                    font-weight: 600;
+                    vertical-align: middle;
+                    height: 32px;
+                    line-height: 30px;
+                    border-radius: 2rem;
+                    box-sizing: border-box;
+                    padding: 0 20px;
+                    margin-left: 20px;
+                    background: #347EFF;
+
+                    a{
+                        color: #ffffff;
+                    }
+                }
+
+                .github:hover {
+                    background: #347EFF;
+
+                    a{
+                        color: #000000;
+                    }
+                }
+            }
+        }
+    }
+}
