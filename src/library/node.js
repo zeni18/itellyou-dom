@@ -1,7 +1,7 @@
 import getDocument from 'get-document'
 import getWindow from 'get-window'
 import DOMEvent from './event'
-import parse from "./parse"
+import DOMParse from "./parse"
 
 import { toCamelCase, getStyleMap, getComputedStyle, getAttrMap , toHex } from './utils/string'
 
@@ -637,7 +637,7 @@ class DOMNode {
      */
     prepend(selector) {
         this.each(node => {
-            const nodes = parse(selector, this.context)
+            const nodes = DOMParse(selector, this.context)
             if (node.firstChild) {
                 node.insertBefore(nodes[0], node.firstChild)
             } else {
@@ -654,7 +654,7 @@ class DOMNode {
      */
     append(selector) {
         this.each(node => {
-            const nodes = parse(selector, this.context)
+            const nodes = DOMParse(selector, this.context)
             for (let i = 0; i < nodes.length; i++) {
                 const child = nodes[i]
                 if (typeof selector === 'string') {
@@ -674,7 +674,7 @@ class DOMNode {
      */
     before(selector) {
         this.each(node => {
-            const nodes = parse(selector, this.context)
+            const nodes = DOMParse(selector, this.context)
             node.parentNode.insertBefore(nodes[0], node)
         })
         return this
@@ -687,7 +687,7 @@ class DOMNode {
      */
     after(selector) {
         this.each(node => {
-            const nodes = parse(selector, this.context)
+            const nodes = DOMParse(selector, this.context)
             if (node.nextSibling) {
                 node.parentNode.insertBefore(nodes[0], node.nextSibling)
             } else {
@@ -705,7 +705,7 @@ class DOMNode {
     replaceWith(selector) {
         const newNodes = []
         this.each(node => {
-            const nodes = parse(selector, this.context)
+            const nodes = DOMParse(selector, this.context)
             const newNode = nodes[0]
             node.parentNode.replaceChild(newNode, node)
             newNodes.push(newNode)
@@ -717,6 +717,7 @@ class DOMNode {
 export {
     DOMNode ,
     DOMEvent ,
+    DOMParse ,
     toCamelCase , 
     getStyleMap ,
     getComputedStyle ,
@@ -730,6 +731,6 @@ export {
  * @return {DOMNode} DOMNode 实例
  */
 export default ( selector, context ) => {
-    const nodes = parse( selector , context )
+    const nodes = DOMParse( selector , context )
     return new DOMNode( nodes , context )
 }
