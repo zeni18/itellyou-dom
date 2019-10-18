@@ -3,7 +3,7 @@ import getWindow from 'get-window'
 import DOMEvent from './event'
 import DOMParse from "./parse"
 
-import { toCamelCase, getStyleMap, getComputedStyle, getAttrMap , toHex } from './utils/string'
+import { toCamelCase, getStyleMap, getComputedStyle, getAttrMap , toHex , toMap } from './utils/string'
 
 const isMatchesSelector = (element, selector) => {
     if (element.nodeType !== Node.ELEMENT_NODE) {
@@ -722,7 +722,8 @@ export {
     getStyleMap ,
     getComputedStyle ,
     getAttrMap ,
-    toHex
+    toHex ,
+    toMap
 }
 
 /**
